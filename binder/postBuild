@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
 
-import sys
-import shutil
-import os
-
 ###nbformat use to drop the first notebook cell, based on https://stackoverflow.com/a/71244733/8508004 to get second cell forward.
 # Don't want first cell because first cell currently, which is ast https://nbviewer.org/github/dbikard/genomenotebook/blob/d6f8a1e9cf56277869a822e050a7cb9f7d09a5e5/nbs/00_Examples.ipynb , is above the main title and starts with `#| hide`
 cell_to_start_collecting_at = 2 # number of cell to start the span of cells to collect; first cell gets number 1 in bracket if run so use that numbering
@@ -15,8 +11,5 @@ new_ntbk.cells = [cell for indx, cell in enumerate(ntbk.cells) if cell_to_start_
 nbf.write(new_ntbk, "00_Examples.ipynb", version=nbf.NO_CONVERT)
 ###END OF nbformat use to drop the first notebook cell.
 
-# based on https://github.com/yuvipanda/jupyterlab/blob/master/binder/start, the next two lines seem to be equivalent of `exec "$@"`, which this must be last line according to 
-# https://repo2docker.readthedocs.io/en/latest/config_files.html#start-run-code-before-the-user-sessions-starts
-argv = sys.argv[1:] + ['--config', 'binder/jupyter_notebook_config.py']
-os.execv(shutil.which(argv[0]), argv)
+
 
