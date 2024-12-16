@@ -15,7 +15,8 @@ new_ntbk.cells = [cell for indx, cell in enumerate(ntbk.cells) if cell_to_start_
 nbf.write(new_ntbk, "00_Examples.ipynb", version=nbf.NO_CONVERT)
 ###END OF nbformat use to drop the first notebook cell.
 
-# based on https://github.com/yuvipanda/jupyterlab/blob/master/binder/start, the next line seems to be equivalent of `exec "$@"`, which this must be last line according to 
+# based on https://github.com/yuvipanda/jupyterlab/blob/master/binder/start, the next two lines seem to be equivalent of `exec "$@"`, which this must be last line according to 
 # https://repo2docker.readthedocs.io/en/latest/config_files.html#start-run-code-before-the-user-sessions-starts
+argv = sys.argv[1:] + ['--config', 'binder/jupyter_notebook_config.py']
 os.execv(shutil.which(argv[0]), argv)
 
