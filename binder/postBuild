@@ -5,10 +5,10 @@
 cell_to_start_collecting_at = 2 # number of cell to start the span of cells to collect; first cell gets number 1 in bracket if run so use that numbering
 length_of_cell_block_to_keep = 2000 # length of sequential span of cells to keep
 import nbformat as nbf
-ntbk = nbf.read("00_Examples.ipynb", nbf.NO_CONVERT)
+ntbk = nbf.read("nbs/00_Examples.ipynb", nbf.NO_CONVERT)
 new_ntbk = ntbk
 new_ntbk.cells = [cell for indx, cell in enumerate(ntbk.cells) if cell_to_start_collecting_at - 2 < indx < (cell_to_start_collecting_at + length_of_cell_block_to_keep - 1)]
-nbf.write(new_ntbk, "00_Examples.ipynb", version=nbf.NO_CONVERT)
+nbf.write(new_ntbk, "nbs/00_Examples.ipynb", version=nbf.NO_CONVERT)
 ###END OF nbformat use to drop the first notebook cell.
 
 
