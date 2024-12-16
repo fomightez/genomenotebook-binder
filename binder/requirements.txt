@@ -3,6 +3,7 @@ biopython>=1.78
 pandas>=1.5.3
 bokeh>=3.1.0,<3.3.0
 genomenotebook
+pyBigWig
 rich
 nbgitpuller
 
